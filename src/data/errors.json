@@ -1,0 +1,26 @@
+[
+  {
+    "params": "unauthorized",
+    "code": 401,
+    "description": "Unautorized",
+    "message": "Access is allowed only for registered users."
+  },
+  {
+    "params": "forbidden",
+    "code": 403,
+    "description": "Forbidden",
+    "message": "You don't have permission to access on this server."
+  },
+  {
+    "params": "notfound",
+    "code": 404,
+    "description": "Page Not Found",
+    "message": "Oops, the page requested does not exist."
+  },
+  {
+    "params": "server-error",
+    "code": 500,
+    "description": "Server Error",
+    "message": "Oops, something went wrong."
+  }
+]
