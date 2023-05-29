@@ -1,62 +1,67 @@
-import { Link } from 'react-router-dom';
-import { Container } from '@/components/Layout';
-import states from '@/data/states.json';
-import departments from '@/data/departments.json';
+import { useState, useContext } from 'react';
+import { Modal } from '@hrnet-plugins/react-modal';
+import { database } from '@/config/firebase';
+import { useCreateEmployee } from '../../hooks/createEmployee';
+import { EmployeeContext } from '@/context';
+import { Header, Main } from '@/components/Layout';
+import { FormGroup } from '@/components/Form';
+import { inputs, address, states, departments } from '@/data/FormData';
 
+/**
+ * The Home component is responsible for displaying the home page of the application.
+ * It includes a form for creating new employees. The form data is managed locally with React state.
+ * Upon successful form submission, a new employee is added to the Firebase database and the local employees context, 
+ * and a confirmation modal is displayed.
+ *
+ * @component
+ *
+ * @returns { React.Element } The Home component.
+ */
 function Home() {
-  const handleSaveEmployee = () => {};
+  const [ formData, setFormData ] = useState({ firstName: '', lastName: '', startDate: '', department: 'Sales', dateOfBirth:'', street: '', city: '', state: 'AL', zipCode: '' });
+  const { createEmployee } = useCreateEmployee(database);
+  const [ showModal, setShowModal ] = useState(false);
+  const { addEmployee } = useContext(EmployeeContext);
+
+  const handleChange = ({ currentTarget }) => {
+    const { name, value } = currentTarget;
+    setFormData({ ...formData, [ name ]: value });
+  }
+
+  const handleSubmit = async event => {
+    event.preventDefault();
+
+    if (Object.values(formData).some(value => value.trim() === '')) return;
+
+    await createEmployee(formData);
+    addEmployee(formData);
+
+    setShowModal(true);
+  };
 
   return (
     <>
-      <div className="title">
-        <h1>HRnet</h1>
-      </div>
+      <Header title="HRnet" link={[ "/employees", "View Current Employees" ]} />
 
-      <Container>
-        <Link to="/employees">View Current Employees</Link>
+      <Main>
         <h2>Create Employee</h2>
 
-        <form action="#" id="create-employee">
-          <label htmlFor="first-name">First Name</label>
-          <input type="text" id="first-name" />
-
-          <label htmlFor="last-name">Last Name</label>
-          <input type="text" id="last-name" />
-
-          <label htmlFor="date-of-birth">Date of Birth</label>
-          <input id="date-of-birth" type="text" />
-
-          <label htmlFor="start-date">Start Date</label>
-          <input id="start-date" type="text" />
+        <form id="create-employee" onSubmit={ handleSubmit } noValidate>
+          <div className="info">
+            { inputs.map(input => <FormGroup key={ input.id } id={ input.id } label={ input.label } type={ input.type }  options={ departments }  onChange={ handleChange } />) }
+          </div>
 
           <fieldset className="address">
             <legend>Address</legend>
 
-            <label htmlFor="street">Street</label>
-            <input id="street" type="text" />
-
-            <label htmlFor="city">City</label>
-            <input id="city" type="text" />
-
-            <label htmlFor="state">State</label>
-            <select name="state" id="state">
-              { states.map((state, index) => <option key={ index }>{ state.option }</option>) }
-            </select>
-
-            <label htmlFor="zip-code">Zip Code</label>
-            <input id="zip-code" type="number" />
+            { address.map(data => <FormGroup key={ data.id } id={ data.id } label={ data.label } type={ data.type } options={ states } onChange={ handleChange } />) }
           </fieldset>
 
-          <label htmlFor="department">Department</label>
-          <select name="department" id="department">
-            { departments.map((department, index) => <option key={ index }>{ department.option }</option> ) }
-          </select>
+          <button id="submit-button" type="submit">Save</button>
         </form>
+      </Main>
 
-        <button onClick={ handleSaveEmployee }>Save</button>
-      </Container>
-
-      <div id="confirmation" className="modal">Employee Created!</div>
+      <Modal id="confirmation" isVisible={ showModal } onClose={ () => setShowModal(false) }>Employee Created!</Modal>
     </>
   );
 }

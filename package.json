@@ -9,14 +9,21 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@hrnet-plugins/react-datatable": "^0.1.11",
+    "@hrnet-plugins/react-modal": "^0.1.6",
+    "@hrnet-plugins/react-selectmenu": "^0.1.8",
+    "firebase": "^9.22.0",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
+    "react-datepicker": "^4.11.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.11.1",
+    "react-select": "^5.7.3",
     "sass": "^1.62.1"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",
+    "@types/react-datepicker": "^4.11.2",
     "@types/react-dom": "^18.0.11",
     "@vitejs/plugin-react": "^3.1.0",
     "vite": "^4.2.0"

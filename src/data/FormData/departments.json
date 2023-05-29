@@ -1,0 +1,7 @@
+[
+  { "option": "Sales", "value": "Sales" },
+  { "option": "Marketing", "value": "Marketing" },
+  { "option": "Engineering", "value": "Engineering" },
+  { "option": "Human Resources", "value": "Human Resources" },
+  { "option": "Legal", "value": "Legal" }
+]

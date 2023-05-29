@@ -10,10 +10,10 @@
 @import 'base/base';
 
 // 4. Layout-related sections
-@import "layout/container";
+@import "layout/header", "layout/main", "layout/container";
 
 // 5. Components
-@import 'components/icons';
+@import "components/form";
 
 // 6. Page-specific styles
 // @import '';
