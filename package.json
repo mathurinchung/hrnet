@@ -9,8 +9,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@hrnet-plugins/react-modal": "^0.1.6",
-    "@hrnet-plugins/react-selectmenu": "^0.1.8",
+    "@hrnet-plugins/react-modal": "^0.1.9",
+    "@hrnet-plugins/react-selectmenu": "^0.1.11",
     "firebase": "^9.22.0",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",

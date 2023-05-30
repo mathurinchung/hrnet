@@ -829,17 +829,17 @@
     protobufjs "^7.0.0"
     yargs "^17.7.2"
 
-"@hrnet-plugins/react-modal@^0.1.6":
-  version "0.1.6"
-  resolved "https://registry.yarnpkg.com/@hrnet-plugins/react-modal/-/react-modal-0.1.6.tgz#54841ba14367d789eb5ce46665c213d2b6ed668f"
-  integrity sha512-5+rFuxLxzzuEi5FskYxlZ/Sayi91W6a4H7bLn0TdmOsmOmbH5H9gsXF64fUw0PiTcs9bF3EyNJNsYqPlEFu2xA==
+"@hrnet-plugins/react-modal@^0.1.9":
+  version "0.1.9"
+  resolved "https://registry.yarnpkg.com/@hrnet-plugins/react-modal/-/react-modal-0.1.9.tgz#4ceb052d686b850ae456bdc6128c673ed36c46af"
+  integrity sha512-Di8SnK0Qjwfd9uSRi6FtYwDKzaXjNGIxmglyIkLXHTl+PJDwy8MI2q12iMRzocT9j8c0uUOyHmVppHZWtfmlOg==
   dependencies:
     prop-types "^15.8.1"
 
-"@hrnet-plugins/react-selectmenu@^0.1.8":
-  version "0.1.8"
-  resolved "https://registry.yarnpkg.com/@hrnet-plugins/react-selectmenu/-/react-selectmenu-0.1.8.tgz#d2de57a7aca2af1e7ea77cef9a33e14b03c2d6f3"
-  integrity sha512-7FReSRfMx2Mt7hYyW4lN4Zicgr10T/o8uXkHOPso4Handj40bqlNdY7LASP4NX/9qpAeYWHG4YgscnO/I2BqeA==
+"@hrnet-plugins/react-selectmenu@^0.1.11":
+  version "0.1.11"
+  resolved "https://registry.yarnpkg.com/@hrnet-plugins/react-selectmenu/-/react-selectmenu-0.1.11.tgz#228d2721f03e0ea4c7173d6c41cf04ac0d5a931d"
+  integrity sha512-A+euDOIEPbXSAFqDSx/OMYfPlJzsTvTeWv9VgQpfBlk8vmCA/MhEWbXuO0F7U5DMvdpRUn4jZKST1TVpFQbXyg==
   dependencies:
     prop-types "^15.8.1"
 
