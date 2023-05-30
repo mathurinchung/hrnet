@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { DataTable } from '@hrnet-plugins/react-datatable';
+import { DataTable } from '@/components/Plugins/DataTable';
 import { EmployeeContext } from '@/context';
 import { Header, Main } from '@/components/Layout';
 import { columns } from '@/data/DataTable';

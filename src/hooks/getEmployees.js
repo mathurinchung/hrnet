@@ -1,5 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useContext } from 'react';
 import { ref, get } from 'firebase/database';
+import { EmployeeContext } from '@/context';
 
 /**
  * useGetEmployees is a custom hook for retrieving employees data from a Firebase Realtime Database.
@@ -10,18 +11,16 @@ import { ref, get } from 'firebase/database';
  * @returns { Object } An object containing the employees data and any error that occurred during the retrieval operation.
  */
 function useGetEmployees(database) {
-  const [employees, setEmployees] = useState(null);
-  const [error, setError] = useState(null);
+  const { setEmployees } = useContext(EmployeeContext);
 
-  useEffect(() => {
+  const getEmployees = async () => {
     const employeesRef = ref(database, 'employees');
 
-    get(employeesRef)
-    .then(snapshot => (snapshot.exists()) ? setEmployees(Object.values(snapshot.val())) : setError('No data available'))
-    .catch(error => setError(error));
-  }, [database]);
+    const snapshot = await get(employeesRef);
+    if (snapshot.exists()) setEmployees(Object.values(snapshot.val()));
+  };
 
-  return { employees, error };
+  return { getEmployees };
 }
 
 export { useGetEmployees };

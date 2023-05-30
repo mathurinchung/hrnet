@@ -1,8 +1,7 @@
-import { useState, useContext } from 'react';
+import { useState } from 'react';
 import { Modal } from '@hrnet-plugins/react-modal';
 import { database } from '@/config/firebase';
-import { useCreateEmployee } from '../../hooks/createEmployee';
-import { EmployeeContext } from '@/context';
+import { useCreateEmployee } from '@/hooks/createEmployee';
 import { Header, Main } from '@/components/Layout';
 import { FormGroup } from '@/components/Form';
 import { inputs, address, states, departments } from '@/data/FormData';
@@ -18,10 +17,9 @@ import { inputs, address, states, departments } from '@/data/FormData';
  * @returns { React.Element } The Home component.
  */
 function Home() {
-  const [ formData, setFormData ] = useState({ firstName: '', lastName: '', startDate: '', department: 'Sales', dateOfBirth:'', street: '', city: '', state: 'AL', zipCode: '' });
   const { createEmployee } = useCreateEmployee(database);
+  const [ formData, setFormData ] = useState({ firstName: '', lastName: '', startDate: '', department: 'Sales', dateOfBirth:'', street: '', city: '', state: 'AL', zipCode: '' });
   const [ showModal, setShowModal ] = useState(false);
-  const { addEmployee } = useContext(EmployeeContext);
 
   const handleChange = ({ currentTarget }) => {
     const { name, value } = currentTarget;
@@ -34,7 +32,6 @@ function Home() {
     if (Object.values(formData).some(value => value.trim() === '')) return;
 
     await createEmployee(formData);
-    addEmployee(formData);
 
     setShowModal(true);
   };

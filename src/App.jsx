@@ -1,9 +1,8 @@
-import { useEffect, useContext } from 'react';
+import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { database } from './config/firebase';
 import { useGetEmployees } from './hooks/getEmployees';
 import { Router } from './components/Routes';
-import { EmployeeContext } from '@/context';
 import './sass/App.scss';
 
 /**
@@ -16,11 +15,10 @@ import './sass/App.scss';
  * @returns {React.Element} The App component.
  */
 function App() {
-  const { employees, error } = useGetEmployees(database);
-  const { setEmployees } = useContext(EmployeeContext);
+  const { getEmployees } = useGetEmployees(database);
   const location = useLocation();
 
-  useEffect(() => { if (employees) setEmployees(employees); }, [ employees ]);
+  useEffect(() => { getEmployees(); }, []);
   
   useEffect(() => {
     document.title = (location.pathname === '/employees') ? 'HRnet - Current Employees' : 'HRnet';

@@ -1,0 +1,107 @@
+/* DataTable */
+.datatable-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3 auto);
+  width: 75%;
+}
+
+/* Show - SelectMenu */
+.datatable-grid .show {
+  display: flex;
+  align-items: center;
+  column-gap: 7px;
+}
+
+.datatable-grid .select-menu {
+  width: 47px;
+  height: 19px;
+}
+
+.datatable-grid .select-menu-button {
+  padding: 1px 2px;
+  width: 47px;
+  height: 19px;
+  background-color: transparent;
+}
+
+.datatable-grid .select-list li {
+  padding: 3px 6px;
+  height: 20px;
+}
+
+/* Search */
+.datatable-grid .search {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  column-gap: 7px;
+}
+
+.datatable-grid input[type=search] {
+  width: 177px;
+  height: 21px;
+}
+
+/* Table */
+.datatable-grid table {
+  grid-column: 1 / 3;
+  grid-row: 2 / 3;
+  margin-top: 15px;
+  border-collapse: collapse;
+  table-layout: fixed;
+  width: 100%;
+}
+
+.datatable-grid thead {
+  height: 39px;
+}
+
+.datatable-grid tr:not(thead tr):hover {
+  background-color: #ddd;
+}
+
+.datatable-grid th, .datatable-grid td {
+  border-bottom: 1px solid #ddd;
+  padding: 0 8px;
+}
+
+.datatable-grid .table-row {
+  height: 34px;
+}
+
+.datatable-grid .odd {
+  background-color: #e7e9eb;
+}
+
+.datatable-grid .empty {
+  text-align: center;
+}
+
+/* Info */
+.datatable-grid .info {
+  grid-column: 1 / 2;
+  grid-row: 3 / 4;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 15px;
+}
+
+/* Pagination */
+.datatable-grid .pagination {
+  grid-column: 2 / 3;
+  grid-row: 3 / 4;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  column-gap: 15px;
+  margin-top: 15px;
+}
+
+.datatable-grid .pagination button {
+  padding: 5px;
+  width: 75px;
+}

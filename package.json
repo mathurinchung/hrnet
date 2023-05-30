@@ -9,7 +9,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@hrnet-plugins/react-datatable": "^0.1.11",
     "@hrnet-plugins/react-modal": "^0.1.6",
     "@hrnet-plugins/react-selectmenu": "^0.1.8",
     "firebase": "^9.22.0",

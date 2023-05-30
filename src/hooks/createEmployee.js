@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useContext } from 'react';
 import { ref, push } from 'firebase/database';
+import { EmployeeContext } from '@/context';
 
 /**
  * useCreateEmployee is a custom hook that provides a function for creating an employee in a Firebase database.
@@ -10,21 +11,16 @@ import { ref, push } from 'firebase/database';
  * @returns { Object } An object containing the createEmployee function and any error that occurred during the last creation operation.
  */
 function useCreateEmployee(database) {
-  const [error, setError] = useState(null);
+  const { addEmployee } = useContext(EmployeeContext);
 
   const createEmployee = async (formData) => {
-    setError(null);
-
     const employeesRef = ref(database, 'employees/');
 
-    try {
-      await push(employeesRef, formData);
-    } catch (error) {
-      setError(error);
-    }
+    await push(employeesRef, formData);
+    addEmployee(formData);
   };
 
-  return { createEmployee, error };
+  return { createEmployee };
 }
 
 export { useCreateEmployee };

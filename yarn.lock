@@ -829,14 +829,6 @@
     protobufjs "^7.0.0"
     yargs "^17.7.2"
 
-"@hrnet-plugins/react-datatable@^0.1.11":
-  version "0.1.11"
-  resolved "https://registry.yarnpkg.com/@hrnet-plugins/react-datatable/-/react-datatable-0.1.11.tgz#6794a05daa83177a8f669eadfc597c190cad7893"
-  integrity sha512-D5vQR9EUgAtXvLU7hWj10B5HDj8usNgjhcJRFS2p0QXM+OhViEDvPdWGvJzepMhC5tg+SoJ3mt1NeJbhiJ3cZw==
-  dependencies:
-    "@hrnet-plugins/react-selectmenu" "^0.1.8"
-    prop-types "^15.8.1"
-
 "@hrnet-plugins/react-modal@^0.1.6":
   version "0.1.6"
   resolved "https://registry.yarnpkg.com/@hrnet-plugins/react-modal/-/react-modal-0.1.6.tgz#54841ba14367d789eb5ce46665c213d2b6ed668f"
