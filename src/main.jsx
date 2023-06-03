@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
-import { EmployeeContextProvider } from './context';
+import { EmployeeContextProvider } from './context/EmployeeContext';
 import App from './App';
 import './sass/main.scss';
 

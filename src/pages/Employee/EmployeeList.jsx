@@ -1,20 +1,20 @@
-import { useContext } from 'react';
+import { useEmployeeContext } from '@/hooks/employeeContext';
 import { DataTable } from '@/components/Plugins/DataTable';
-import { EmployeeContext } from '@/context';
 import { Header, Main } from '@/components/Layout';
 import { columns } from '@/data/DataTable';
 
 /**
- * The EmployeeList component is responsible for displaying a list of current employees.
- * It retrieves the employees data from the EmployeeContext and uses a DataTable component from '@hrnet-plugins/react-datatable' for rendering the list.
- * It also includes a Header and Main layout components.
+ * A component for displaying a list of employees.
+ *
+ * This component fetches the employees data using `useEmployeeContext` hook, and presents it in a `DataTable`.
+ * It also includes a `Header` component for navigation and a `Main` component for layout purposes.
  *
  * @component
  *
- * @returns { React.Element } The EmployeeList component.
+ * @returns { React.Element } A React element rendering a list of employees.
  */
 function EmployeeList() {
-  const { employees } = useContext(EmployeeContext);
+  const { employees } = useEmployeeContext();
 
   return (
     <>

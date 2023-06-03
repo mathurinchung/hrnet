@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { database } from './config/firebase';
-import { useGetEmployees } from './hooks/getEmployees';
+import { useEmployeeContext } from './hooks/employeeContext';
 import { Router } from './components/Routes';
 import './sass/App.scss';
 
@@ -12,10 +11,10 @@ import './sass/App.scss';
  *
  * @component
  *
- * @returns {React.Element} The App component.
+ * @returns { React.Element } The App component.
  */
 function App() {
-  const { getEmployees } = useGetEmployees(database);
+  const { getEmployees } = useEmployeeContext();
   const location = useLocation();
 
   useEffect(() => { getEmployees(); }, []);

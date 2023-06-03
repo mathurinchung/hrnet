@@ -2,26 +2,28 @@ import { createContext, useState } from "react";
 import PropTypes from 'prop-types';
 
 /**
- * The EmployeeContext is a React Context for managing and providing the employee data.
+ * Employee context using React's context API.
+ *
+ * This context is used to share employees data across the component tree.
+ * It includes two values: employees (array of employee data) and setEmployees (function to update the employees data).
  */
 export const EmployeeContext = createContext();
 
 /**
- * The EmployeeContextProvider component is a wrapper component that provides the employee data to its child components.
- * It manages the state of the employees and provides a function to add a new employee.
+ * Employee context provider component.
+ *
+ * This component should be used to wrap any part of the component tree that needs access to the employees data.
  *
  * @component
  *
- * @param { React.Node } children - The children elements to be rendered inside the Provider.
- * @returns { React.Element } The EmployeeContextProvider component.
+ * @param { React.Node } children - The children components to be rendered inside the context provider.
+ * @returns { React.Element } A React element rendering the EmployeeContext provider.
  */
-function EmployeeContextProvider({ children }) {
+export function EmployeeContextProvider({ children }) {
   const [ employees, setEmployees ] = useState([]);
 
-  const addEmployee = newEmployee => setEmployees(prevEmployees => [...prevEmployees, newEmployee]);
-
   return (
-    <EmployeeContext.Provider value={{ setEmployees, employees, addEmployee }}>
+    <EmployeeContext.Provider value={{ employees, setEmployees }}>
       { children }
     </EmployeeContext.Provider>
   );
@@ -30,5 +32,3 @@ function EmployeeContextProvider({ children }) {
 EmployeeContextProvider.prototypes = {
   children: PropTypes.node.isRequired
 };
-
-export default EmployeeContextProvider;

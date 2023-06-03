@@ -9,25 +9,25 @@ import DataTablePagination from './DataTablePagination';
 import './DataTable.css';
 
 /**
- * This DataTable component is a React component that manages a table with filtering, sorting, pagination, and display options.
- * The component handles its own state, including the number of items per page, search value, sorting, total number of items, and the current page.
+ * A general purpose DataTable component.
+ *
+ * This component takes in an array of data and column configurations and outputs a table with sorting, searching, and pagination functionality.
  *
  * @component
  *
- * @param { String } id - The unique identifier of the table.
- * @param { String } className - The CSS classes applied to the table.
- * @param { Array } columns - The columns of the table, each column being an object containing the column's name and the column's selector in the data.
- * @param { Array } data - The data displayed in the table, each item being an object corresponding to column selectors.
- *
- * @returns { React.Element } The table component.
+ * @param { String } id - The id of the table.
+ * @param { String } className - The class name for the table.
+ * @param { Array.<Object> } columns - The column configuration for the table.
+ * @param { Array.<Object> } data - The data for the table.
+ * @returns { React.Element } A React table element with sorting, searching, and pagination.
  */
 function DataTable({ id, className, columns, data }) {
-  const [ itemsPerPage, setItemsPerPage ] = useState(10)
-  const [ searchValue, setSearchValue ] = useState('');
-  const [ sorting, setSorting ] = useState({ column: '', order: '' });
-  const [currentItemCount, setCurrentItemCount] = useState(0);
   const [ totalItems, setTotalItems ] = useState(0);
   const [ currentPage, setCurrentPage ] = useState(1);
+  const [ itemsPerPage, setItemsPerPage ] = useState(10)
+  const [ currentItemCount, setCurrentItemCount ] = useState(0);
+  const [ searchValue, setSearchValue ] = useState('');
+  const [ sorting, setSorting ] = useState({ column: '', order: '' });
 
   const handleSelectTable = event => setItemsPerPage(parseInt(event.target.value));
 
@@ -82,3 +82,4 @@ DataTable.propTypes = {
 };
 
 export default DataTable;
+

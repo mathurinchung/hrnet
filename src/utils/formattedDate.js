@@ -10,5 +10,5 @@ export const formattedDate = (date) => {
       day = '' + newDate.getDate(),
       year = newDate.getFullYear();
 
-  return [month.padStart(2, '0'), day.padStart(2, '0'), year].join('/');
+  return [ month.padStart(2, '0'), day.padStart(2, '0'), year ].join('/');
 };

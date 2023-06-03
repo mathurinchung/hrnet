@@ -1,13 +1,14 @@
 # [ HRnet ] Convert a jQuery library to React
 
-...
+WealthHealth's HRnet application, a web application for managing employee records, is undergoing an exciting transition. The current application, which heavily uses jQuery on the frontend, is being updated to React. This README provides the necessary steps to install, configure, and understand this new version of the application.
 
 ## Features
 
-...
+Here are the features that the application offers:
 
 * **View Employee List**: You can view the list of all employees stored in the database.
 * **Create Employee**: There is a form to add new employees into the system.
+* **Replace jQuery Plugins**: The project replaces jQuery plugins with React components to improve performance and stability. The plugins replaced include Date selectors, Modal windows, Dropdown menus, and Data tables.
 
 ## Prerequisites
 
@@ -36,7 +37,7 @@ Clone the repository:
 
 Create a Firebase project and get your configuration object. Then, create a .env file in the project root and fill in your Firebase config details.
 
-```.env
+```bash
 VITE_FIREBASE_API_KEY="your-api-key"
 VITE_FIREBASE_AUTH_DOMAIN="your-auth-domain"
 VITE_FIREBASE_DATABASE_URL="your-database-url"

@@ -6,9 +6,7 @@ import path from 'path';
 export default defineConfig({
   plugins: [react()],
   resolve: {
-    alias: {
-      '@': path.resolve(__dirname, '/src')
-    }
+    alias: { '@': path.resolve(__dirname, '/src') }
   },
   server: {
     port: 4200,
@@ -16,6 +14,8 @@ export default defineConfig({
   },
   build: {
     minify: true,
-    brotliSize: false
+    sourcemap: true,
+    reportCompressedSize: true,
+    chunkSizeWarningLimit: 600
   }
 });
