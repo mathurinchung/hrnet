@@ -49,7 +49,7 @@ function DataTable({ id, className, columns, data }) {
 
     if (sorting.column) {
       const reversed = sorting.order === 'asc' ? 1 : -1;
-      filtered.sort((a, b) => reversed * a[sorting.column].localeCompare(b[sorting.column]));
+      filtered.sort((a, b) => reversed * String(a[sorting.column]).localeCompare(String(b[sorting.column])));
     }
 
     return filtered.slice((currentPage - 1) * itemsPerPage, (currentPage - 1) * itemsPerPage + itemsPerPage);
