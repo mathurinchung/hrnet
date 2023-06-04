@@ -41,7 +41,7 @@ function DataTable({ id, className, columns, data }) {
     let filtered = data;
 
     if (searchValue) {
-      filtered = data.filter(item => Object.values(item).some(value => value.toLowerCase().includes(searchValue.toLowerCase())));
+      filtered = data.filter(item => Object.values(item).some(value => String(value).toLowerCase().includes(searchValue.toLowerCase())));
     }
 
     setTotalItems(filtered.length);
