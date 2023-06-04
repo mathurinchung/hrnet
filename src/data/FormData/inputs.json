@@ -3,5 +3,5 @@
   { "id": "lastName", "label": "Last Name", "type": "text" },
   { "id": "dateOfBirth", "label": "Date of Birth", "type": "date" },
   { "id": "startDate", "label": "Start Date", "type": "date" },
-  { "id": "department", "label": "Department", "type": "select" }
+  { "id": "department", "label": "Department", "type": "select", "defaultValue": "Sales" }
 ]

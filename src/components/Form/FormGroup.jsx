@@ -28,7 +28,7 @@ function FormGroup({ id, label, options, type, onChange }) {
   );
 }
 
-FormGroup.propTypes= {
+FormGroup.propTypes = {
   id: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   option: PropTypes.array,

@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Modal } from '@hrnet-plugins/react-modal';
 import { useEmployeeContext } from '@/hooks/employeeContext';
 import { Header, Main } from '@/components/Layout';
 import { Form } from '@/components/Form';
+import * as fields from '@/data/FormData';
 
 /**
  * A component for creating new employees.
@@ -16,11 +17,12 @@ import { Form } from '@/components/Form';
  */
 function Home() {
   const { createEmployee } = useEmployeeContext();
-  const [ formData, setFormData ] = useState({ firstName: '', lastName: '', startDate: '', department: 'Sales', dateOfBirth:'', street: '', city: '', state: 'AL', zipCode: '' });
-  const [ modal, setModal ] = useState({ show: false, message: '' });
+  const [ formData, setFormData ] = useState({});
+  const [ newEmployee, setNewEmployee ] = useState(false);
+  const [ modal, setModal ] = useState(false);
 
   const handleCloseModal = () => {
-    setModal({ ...modal, show: false });
+    setModal(false);
   };
 
   const handleChange = ({ currentTarget }) => {
@@ -31,12 +33,25 @@ function Home() {
   const handleSubmit = async event => {
     event.preventDefault();
 
-    if (Object.values(formData).some(value => value.trim() === '')) return setModal({ show: true, message: 'Please fill out the form!' });
+    if (Object.values(formData).some(value => value.trim() === '')) {
+      setNewEmployee(false);
+    } else {
+      setNewEmployee(true);
+      await createEmployee(formData);
+    }
 
-    await createEmployee(formData);
-
-    setModal({ show: true, message: 'Employee Created!' });
+    setModal(true);
   };
+
+  useEffect(() => {
+    const formFields = {};
+
+    [ ...fields.inputs, ...fields.address ].forEach(input => {
+      formFields[input.id] = input.defaultValue || '';
+    });
+    
+    setFormData(formFields);
+  }, []);
 
   return (
     <>
@@ -45,11 +60,11 @@ function Home() {
       <Main>
         <h2>Create Employee</h2>
 
-        <Form onSubmit={ handleSubmit } onChange={ handleChange } />
+        <Form fields={ fields } onSubmit={ handleSubmit } onChange={ handleChange } />
       </Main>
 
-      <Modal id="confirmation" isVisible={ modal.show } onClose={ handleCloseModal }>
-        { modal.message }
+      <Modal id="confirmation" isVisible={ modal } onClose={ handleCloseModal }>
+        { newEmployee ? 'Employee Created!' : 'Please fill out the form!' }
       </Modal>
     </>
   );

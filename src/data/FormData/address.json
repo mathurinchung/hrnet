@@ -1,6 +1,6 @@
 [
   { "id": "street", "label": "Street", "type": "text" },
   { "id": "city", "label": "City", "type": "text" },
-  { "id": "state", "label": "State", "type": "select" },
+  { "id": "state", "label": "State", "type": "select", "defaultValue": "AL" },
   { "id": "zipCode", "label": "Zip Code", "type": "number" }
 ]
